@@ -16,6 +16,8 @@ contract FrancosionNFT is ERC721URIStorage {
         console.log('Hello, this is Francosion NFT');
     }
 
+    event NewFrancosionNFTMinted(address sender, uint256 tokenId);
+
      // A function our user will hit to get their NFT.
     function mintNFT() public {
         // Get the current tokenId, this starts at 0.
@@ -31,5 +33,7 @@ contract FrancosionNFT is ERC721URIStorage {
         _tokenIds.increment();
 
         console.log("An NFT with ID %s has been minted to %s", newItemId, msg.sender);
+
+        emit NewFrancosionNFTMinted(msg.sender, newItemId);
     }
 }
